@@ -2,5 +2,12 @@
 set -e
 
 # Stop the running container (if any)
-containerID=`docker ps | awk -F " " '{print $1}'`
-docker rm -f $containerID
+containerID=$(docker ps -q --filter ancestor=ekaagustina/simple-python-flask-app)
+
+if [ ! -z "$containerID" ]; then
+  docker rm -f $containerID
+  echo "Container $containerID has been stopped and removed."
+else
+  echo "No running container found."
+fi
+
