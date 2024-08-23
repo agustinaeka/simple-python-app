@@ -23,6 +23,11 @@ phases:
   post_build:
     commands:
       - echo "Build completed successfully!"
+  artifacts:
+    files:
+      - appspec.yml #added
+      - scripts/**/*
+    discard-paths: no
 # artifacts:
 #   files:
 #     - '**/*'
